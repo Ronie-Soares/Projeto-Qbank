@@ -2,7 +2,7 @@
 <div>
 <h1>Projeto A3</h1>
 <h2>Banco Qbank</h2>
-/div>
+</div>
 
 <div>
   <h3>Desenvolvimento de um sistema bancário:</h3>
@@ -20,31 +20,36 @@ A conta do cliente permitirá o acesso a
 </div>
 <div>
   <h3>Estrutura modular do Sistema Bancário:</h3>
+  <br>
+  <h4>Módulo de Contas:</h4>
+  <p>Aqui o usuário terá a opção de criar contas,
+visualizá-las, atualizá-las e excluí-las.</p>
 
-• Módulo de Contas: Aqui o usuário terá a opção de criar contas,
-visualizá-las, atualizá-las e excluí-las.
-
-• Módulo de transações: Uma vez criada a conta, o usuário poderá
+  <h4>Módulo de transações:</h4>
+  <p>Uma vez criada a conta, o usuário poderá
 realizar diversas transações, como transferências para contas
 próprias, transferências para terceiros e transferências para outros
-bancos.
+bancos.</p>
 
-• Módulo Empréstimo: Neste módulo o usuário pode solicitar um
+  <h4>Módulo Empréstimo:</h4>
+  <p>Neste módulo o usuário pode solicitar um
 empréstimo anexando todas as informações necessárias e
 preenchendo o formulário correspondente. O sistema calculará o
 valor que o usuário poderá emprestar e o plano de pagamento.
 Além disso, você pode efetuar o pagamento mensal de suas
-parcelas ou agendá-las caso queira o débito automático.
+parcelas ou agendá-las caso queira o débito automático.</p>
 
-• Módulo Cartão de Crédito: Neste módulo o usuário pode solicitar
+  <h4>Módulo Cartão de Crédito:</h4>
+  <p>Neste módulo o usuário pode solicitar
 seu cartão de crédito preenchendo o formulário de inscrição. O
 sistema calculará o limite de crédito que o usuário poderá
 acessar. Assim que o cartão for aprovado, o usuário poderá
 realizar compras e também terá a opção de pagar manualmente
 a dívida ou agendar pagamentos caso queira o débito
-automático.
+automático.</p>
 
-• Módulo de Pagamento de Serviços: Este módulo permitirá ao
+  <h4>Módulo de Pagamento de Serviços:</h4>
+  <p>Este módulo permitirá ao
 usuário efetuar pagamentos de serviços externos, como
 mensalidades universitárias, despesas de gerais ou serviços
 telefônicos, entre outros. Para tal, o utilizador deverá registar o
@@ -52,5 +57,7 @@ serviço ao qual pretende efetuar o pagamento, fornecendo os
 dados necessários, podendo efetuar pagamentos manuais ou
 agendá-los caso prefira o débito automático.
 </div>
+</p>
+
 
 
