@@ -1,8 +1,4 @@
-# Projeto-Qbank
-<div>
-<h1>Projeto A3</h1>
-<h2>Banco Qbank</h2>
-</div>
+# Projeto-Qbank - A3
 
 <div>
   <h3>Desenvolvimento de um sistema bancário:</h3>
