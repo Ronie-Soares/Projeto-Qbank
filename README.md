@@ -14,9 +14,9 @@ externos, como universidades e telefonia.
 A conta do cliente permitirá o acesso a
 </p>
 </div>
+<hr>
 <div>
   <h3>Estrutura modular do Sistema Bancário:</h3>
-  <br>
   <h4>Módulo de Contas:</h4>
   <p>Aqui o usuário terá a opção de criar contas,
 visualizá-las, atualizá-las e excluí-las.</p>
