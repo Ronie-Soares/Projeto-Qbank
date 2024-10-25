@@ -1,6 +1,8 @@
 # Projeto-Qbank
+<div>
 <h1>Projeto A3</h1>
 <h2>Banco Qbank</h2>
+/div>
 
 <div>
   <h3>Desenvolvimento de um sistema bancário:</h3>
@@ -16,7 +18,8 @@ externos, como universidades e telefonia.
 A conta do cliente permitirá o acesso a
 </p>
 </div>
-# Estrutura modular do Sistema Bancário:
+<div>
+  <h3>Estrutura modular do Sistema Bancário:</h3>
 
 • Módulo de Contas: Aqui o usuário terá a opção de criar contas,
 visualizá-las, atualizá-las e excluí-las.
@@ -48,3 +51,6 @@ telefônicos, entre outros. Para tal, o utilizador deverá registar o
 serviço ao qual pretende efetuar o pagamento, fornecendo os
 dados necessários, podendo efetuar pagamentos manuais ou
 agendá-los caso prefira o débito automático.
+</div>
+
+
