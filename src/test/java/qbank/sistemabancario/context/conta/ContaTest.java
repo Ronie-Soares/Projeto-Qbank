@@ -18,10 +18,10 @@ public class ContaTest {
     @Mock
     Pessoa pessoa;
 
-//    @Test
-//    void RetornaTrueAoCriarConta(){
-//
-//        assertTrue(conta.contaCriada());
-//    }
+    @Test
+    void RetornaTrueAoCriarConta(){
+
+        assertTrue(conta.contaCriada());
+    }
 
 }
