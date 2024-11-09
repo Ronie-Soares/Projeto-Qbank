@@ -8,6 +8,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import qbank.sistemabancario.context.pessoa.Pessoa;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class ContaTest {
@@ -18,10 +20,14 @@ public class ContaTest {
     @Mock
     Pessoa pessoa;
 
+    @Mock
+    ContaCorrente contaCorrente;
+
     @Test
     void RetornaTrueAoCriarConta(){
-
         assertTrue(conta.contaCriada());
     }
+
+
 
 }
