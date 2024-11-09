@@ -1,83 +1,99 @@
-## Micronaut 4.6.3 Documentation
+# Projeto Qbank - A3
 
-- [User Guide](https://docs.micronaut.io/4.6.3/guide/index.html)
-- [API Reference](https://docs.micronaut.io/4.6.3/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/4.6.3/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
+## Descrição do Projeto
+O **Qbank** é um sistema bancário desenvolvido para permitir que os clientes realizem diversas operações financeiras por meio de um aplicativo. As funcionalidades incluem o gerenciamento de contas, transações, empréstimos, cartões de crédito e pagamentos de serviços externos.
+
 ---
 
-- [Micronaut Maven Plugin documentation](https://micronaut-projects.github.io/micronaut-maven-plugin/latest/)
-## Feature micronaut-aot documentation
+## Dependências
 
-- [Micronaut AOT documentation](https://micronaut-projects.github.io/micronaut-aot/latest/guide/)
+Para construir e executar o projeto, você precisará incluir as seguintes dependências no seu arquivo `pom.xml`:
 
+### Micronaut 4.6.6
+- **Micronaut HTTP Server**: Para criação de servidores HTTP.
+- **Micronaut Serialization Jackson**: Para serialização e desserialização de objetos JSON.
 
-## Feature serialization-jackson documentation
+### Mockito
+- **Mockito**: Biblioteca de simulação para testes em Java, utilizada para criar objetos simulados em testes unitários.
 
-- [Micronaut Serialization Jackson Core documentation](https://micronaut-projects.github.io/micronaut-serialization/latest/guide/)
+### Dependências do `pom.xml`
+```xml
+<dependencies>
+    <dependency>
+        <groupId>io.micronaut</groupId>
+        <artifactId>micronaut-http-server-netty</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.micronaut.serde</groupId>
+        <artifactId>micronaut-serde-jackson</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+        <groupId>io.micronaut</groupId>
+        <artifactId>micronaut-http-client</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>io.micronaut.test</groupId>
+        <artifactId>micronaut-test-junit5</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-junit-jupiter</artifactId>
+        <scope>test</scope>
+        <version>5.5.0</version>
+    </dependency>
+</dependencies>
+```
 
+---
 
-## Feature maven-enforcer-plugin documentation
+## Funcionalidades do Sistema
 
-- [https://maven.apache.org/enforcer/maven-enforcer-plugin/](https://maven.apache.org/enforcer/maven-enforcer-plugin/)
+### 1. Módulo de Contas
+- **Criação de Contas**: Permite que os usuários criem novas contas.
+- **Visualização de Contas**: Os usuários podem visualizar suas contas ativas.
+- **Atualização de Contas**: Possibilidade de modificar os dados da conta.
+- **Exclusão de Contas**: Opção para encerrar contas existentes.
 
+### 2. Módulo de Transações
+- **Transferências**: Realização de transferências para:
+    - Contas próprias
+    - Terceiros
+    - Outros bancos
 
-# Projeto-Qbank - A3
+### 3. Módulo de Empréstimos
+- **Solicitação de Empréstimos**: Os usuários podem solicitar um empréstimo preenchendo um formulário.
+- **Cálculo do Empréstimo**: O sistema calcula o valor máximo que o usuário pode emprestar e o plano de pagamento.
+- **Pagamento de Parcelas**: Opção para pagar mensalmente ou agendar débito automático.
 
-<div>
-  <h3>Desenvolvimento de um sistema bancário:</h3>
-<p>
-O sistema permite que os clientes do banco
-realizem diversas operações bancárias por
-meio do Aplicativo. Inclui gerenciamento
-de contas, transações para fazer
-transferências, solicitação e gerenciamento
-de empréstimos, gerenciamento de cartões
-de crédito e pagamentos de serviços
-externos, como universidades e telefonia.
-A conta do cliente permitirá o acesso a
-</p>
-</div>
-<hr>
-<div>
-  <h3>Estrutura modular do Sistema Bancário:</h3>
-  <h4>Módulo de Contas:</h4>
-  <p>Aqui o usuário terá a opção de criar contas,
-visualizá-las, atualizá-las e excluí-las.</p>
+### 4. Módulo de Cartão de Crédito
+- **Solicitação de Cartão de Crédito**: Os usuários podem solicitar um cartão de crédito preenchendo um formulário de inscrição.
+- **Cálculo do Limite**: O sistema calcula o limite de crédito disponível.
+- **Gestão de Pagamentos**: Opções para pagar manualmente ou agendar pagamentos com débito automático.
 
-  <h4>Módulo de transações:</h4>
-  <p>Uma vez criada a conta, o usuário poderá
-realizar diversas transações, como transferências para contas
-próprias, transferências para terceiros e transferências para outros
-bancos.</p>
+### 5. Módulo de Pagamento de Serviços
+- **Pagamentos de Serviços Externos**: Permite o pagamento de mensalidades universitárias, contas gerais e serviços telefônicos.
+- **Registro de Serviços**: Os usuários registram o serviço que desejam pagar, fornecendo os dados necessários.
+- **Opções de Pagamento**: Possibilidade de pagamentos manuais ou agendados com débito automático.
 
-  <h4>Módulo Empréstimo:</h4>
-  <p>Neste módulo o usuário pode solicitar um
-empréstimo anexando todas as informações necessárias e
-preenchendo o formulário correspondente. O sistema calculará o
-valor que o usuário poderá emprestar e o plano de pagamento.
-Além disso, você pode efetuar o pagamento mensal de suas
-parcelas ou agendá-las caso queira o débito automático.</p>
+---
 
-  <h4>Módulo Cartão de Crédito:</h4>
-  <p>Neste módulo o usuário pode solicitar
-seu cartão de crédito preenchendo o formulário de inscrição. O
-sistema calculará o limite de crédito que o usuário poderá
-acessar. Assim que o cartão for aprovado, o usuário poderá
-realizar compras e também terá a opção de pagar manualmente
-a dívida ou agendar pagamentos caso queira o débito
-automático.</p>
+## Estrutura Modular
 
-  <h4>Módulo de Pagamento de Serviços:</h4>
-  <p>Este módulo permitirá ao
-usuário efetuar pagamentos de serviços externos, como
-mensalidades universitárias, despesas de gerais ou serviços
-telefônicos, entre outros. Para tal, o utilizador deverá registar o
-serviço ao qual pretende efetuar o pagamento, fornecendo os
-dados necessários, podendo efetuar pagamentos manuais ou
-agendá-los caso prefira o débito automático.
-</div>
-</p>
-
-
-
+O sistema é organizado em módulos distintos, cada um abordando uma área específica de operações bancárias, o que facilita a navegação e a experiência do usuário. A modularidade garante que cada funcionalidade possa ser aprimorada ou expandida sem afetar as demais.
