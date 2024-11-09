@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class Transacao {
     private String id;
     private Conta contaOrigem;
-    private String Destino;
+    private String Destino; 
     private BigDecimal valor;
     private LocalDateTime dataHora;
     //private TipoTransacao tipo;
