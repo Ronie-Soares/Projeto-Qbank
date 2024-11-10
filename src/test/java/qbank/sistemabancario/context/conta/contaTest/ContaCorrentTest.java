@@ -35,7 +35,7 @@ public class ContaCorrentTest {
     @Test
     void AlterandoAgenciaContaCorrente() {
         conta.setAgencia("003");
-        assertEquals(conta.getAgencia(),"004");
+        assertEquals(conta.getAgencia(),"003");
     }
     @Test
     void AlterandoNumeroContaCorrente() {
