@@ -4,8 +4,8 @@ import qbank.sistemabancario.context.pessoa.Pessoa;
 
 import java.math.BigDecimal;
 
-public class ContaPoupança extends Conta {
-    public ContaPoupança(String agencia, String numero, Float saldo, Pessoa pessoa) {
+public class ContaPoupanca extends Conta {
+    public ContaPoupanca(String agencia, String numero, Float saldo, Pessoa pessoa) {
         super(agencia, numero, BigDecimal.valueOf(saldo), pessoa, "Poupança");
     }
 

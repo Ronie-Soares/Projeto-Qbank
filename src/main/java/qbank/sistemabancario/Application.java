@@ -4,7 +4,7 @@ import com.google.gson.*;
 import qbank.sistemabancario.context.pessoa.Pessoa;
 import qbank.sistemabancario.context.conta.Conta;
 import qbank.sistemabancario.context.conta.ContaCorrente;
-import qbank.sistemabancario.context.conta.ContaPoupança;
+import qbank.sistemabancario.context.conta.ContaPoupanca;
 import qbank.sistemabancario.context.conta.ContaSalario;
 import qbank.sistemabancario.strategy.transacao.Pix;
 import qbank.sistemabancario.strategy.transacao.TED;
@@ -64,7 +64,7 @@ public class Application {
 
         return switch (opcao) {
             case 1 -> new ContaCorrente(agencia, numeroConta, 4000f, pessoa);
-            case 2 -> new ContaPoupança(agencia, numeroConta, 5000f, pessoa);
+            case 2 -> new ContaPoupanca(agencia, numeroConta, 5000f, pessoa);
             case 3 -> new ContaSalario(agencia, numeroConta, 3000f, pessoa);
             default -> {
                 System.out.println("Opção inválida!");
@@ -174,7 +174,7 @@ public class Application {
         float saldo = contaJson.get("saldo").getAsFloat();
 
         return switch (tipoConta) {
-            case "Poupança" -> new ContaPoupança(contaJson.get("agencia").getAsString(), contaJson.get("numero").getAsString(), saldo, pessoa);
+            case "Poupança" -> new ContaPoupanca(contaJson.get("agencia").getAsString(), contaJson.get("numero").getAsString(), saldo, pessoa);
             case "Salário" -> new ContaSalario(contaJson.get("agencia").getAsString(), contaJson.get("numero").getAsString(), saldo, pessoa);
             default -> new ContaCorrente(contaJson.get("agencia").getAsString(), contaJson.get("numero").getAsString(), saldo, pessoa);
         };
