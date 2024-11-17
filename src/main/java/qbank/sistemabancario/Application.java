@@ -23,20 +23,71 @@ public class Application {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Pessoa pessoa = obterPessoa(scanner);
-        Conta conta = criarConta(scanner, pessoa);
 
+        while (true) {
+            System.out.println("Selecione uma opção:");
+            System.out.println("1 - Criar Conta");
+            System.out.println("2 - Entrar na Conta");
+            System.out.println("3 - Sair");
+
+            int opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcao) {
+                case 1 -> criarConta(scanner);
+                case 2 -> entrarNaConta(scanner);
+                case 3 -> {
+                    System.out.println("Obrigado por usar o sistema bancário!");
+                    return;
+                }
+                default -> System.out.println("Opção inválida!");
+            }
+        }
+    }
+
+    private static void criarConta(Scanner scanner) {
+        Pessoa pessoa;
+        while (true) {
+            pessoa = obterPessoa(scanner);
+            if (verificarDuplicidadeUsuario(pessoa.getNome(), pessoa.getCpf(), pessoa.getRg())) {
+                System.out.println("Usuário já registrado com o nome, CPF ou RG informados. Tente novamente.");
+            } else {
+                break;
+            }
+        }
+
+        Conta conta = criarConta(scanner, pessoa);
         if (conta == null) return;
 
         salvarContaNoJson(conta);
-        System.out.println("Conta criada com sucesso! Saldo inicial: " + conta.getSaldo());
+        System.out.println("Conta criada com sucesso! Saldo inicial: R$" + conta.getSaldo());
+    }
 
-        if (!desejaRealizarTransferencia(scanner)) {
-            System.out.println("Obrigado por usar o sistema bancário!");
+    private static void entrarNaConta(Scanner scanner) {
+        System.out.print("Digite o número da conta: ");
+        String numeroConta = scanner.nextLine();
+        Conta conta = buscarContaPorNumero(numeroConta);
+
+        if (conta == null) {
+            System.out.println("Conta não encontrada.");
             return;
         }
 
-        realizarTransacao(scanner, conta);
+        System.out.println("Olá, " + conta.getPessoa().getNome() + "! Bem-vindo(a) à sua conta.");
+        System.out.println("Tipo de conta: " + conta.getTipoConta());
+        System.out.println("Saldo disponível: R$" + conta.getSaldo());
+        System.out.println("O que deseja fazer?");
+        System.out.println("1 - Transferência");
+        System.out.println("2 - Sair");
+
+        int escolha = scanner.nextInt();
+        scanner.nextLine();
+
+        if (escolha == 1) {
+            realizarTransacao(scanner, conta);
+        } else {
+            System.out.println("Saindo da conta...");
+        }
     }
 
     private static Pessoa obterPessoa(Scanner scanner) {
@@ -51,6 +102,24 @@ public class Application {
         System.out.print("Telefone: ");
         String telefone = scanner.nextLine();
         return new Pessoa(nome, cpf, rg, email, telefone);
+    }
+
+    private static boolean verificarDuplicidadeUsuario(String nome, String cpf, String rg) {
+        JsonArray contasArray = lerContasJson();
+
+        for (JsonElement elemento : contasArray) {
+            JsonObject contaJson = elemento.getAsJsonObject();
+            JsonObject pessoaJson = contaJson.getAsJsonObject("pessoa");
+
+            String nomeExistente = pessoaJson.get("nome").getAsString();
+            String cpfExistente = pessoaJson.get("cpf").getAsString();
+            String rgExistente = pessoaJson.get("rg").getAsString();
+
+            if (nomeExistente.equalsIgnoreCase(nome) || cpfExistente.equals(cpf) || rgExistente.equals(rg)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static Conta criarConta(Scanner scanner, Pessoa pessoa) {
@@ -114,43 +183,6 @@ public class Application {
         }
     }
 
-    private static boolean desejaRealizarTransferencia(Scanner scanner) {
-        System.out.print("Deseja realizar transferências com essa conta? (Sim/Não): ");
-        String resposta = scanner.nextLine();
-        return resposta.equalsIgnoreCase("Sim");
-    }
-
-    private static void realizarTransacao(Scanner scanner, Conta conta) {
-        System.out.println("Escolha o tipo de transação:");
-        System.out.println("1 - Pix\n2 - TED");
-
-        int tipoTransacao = scanner.nextInt();
-        System.out.print("Valor da transação: ");
-        BigDecimal valor = scanner.nextBigDecimal();
-        scanner.nextLine();
-
-        System.out.print("Informe o número da conta de destino: ");
-        String numeroContaDestino = scanner.nextLine();
-        Conta contaDestino = buscarContaPorNumero(numeroContaDestino);
-
-        TransacaoStrategy estrategia = switch (tipoTransacao) {
-            case 1 -> new Pix();
-            case 2 -> new TED();
-            default -> {
-                System.out.println("Opção inválida para transação!");
-                yield null;
-            }
-        };
-
-        if (estrategia != null && contaDestino != null) {
-            estrategia.realizarTransacao(valor, conta, contaDestino);
-            atualizarSaldoNoJson(conta, contaDestino);
-            System.out.println("Transação realizada com sucesso!");
-        } else {
-            System.out.println(contaDestino == null ? "Conta de destino não encontrada." : "Erro na transação.");
-        }
-    }
-
     private static Conta buscarContaPorNumero(String numeroConta) {
         try (FileReader reader = new FileReader(ACCOUNT_FILE_PATH)) {
             JsonObject jsonObject = GSON.fromJson(reader, JsonObject.class);
@@ -180,27 +212,32 @@ public class Application {
         };
     }
 
-    private static void atualizarSaldoNoJson(Conta contaOrigem, Conta contaDestino) {
-        JsonObject jsonObject = lerJsonContas();
+    private static void realizarTransacao(Scanner scanner, Conta conta) {
+        System.out.println("Escolha o tipo de transação:");
+        System.out.println("1 - Pix\n2 - TED");
 
-        for (JsonElement elemento : jsonObject.getAsJsonArray("contas")) {
-            JsonObject contaJson = elemento.getAsJsonObject();
-            if (contaOrigem.getNumero().equals(contaJson.get("numero").getAsString())) {
-                contaJson.addProperty("saldo", contaOrigem.getSaldo());
-            } else if (contaDestino != null && contaDestino.getNumero().equals(contaJson.get("numero").getAsString())) {
-                contaJson.addProperty("saldo", contaDestino.getSaldo());
+        int tipoTransacao = scanner.nextInt();
+        System.out.print("Valor da transação: ");
+        BigDecimal valor = scanner.nextBigDecimal();
+        scanner.nextLine();
+
+        System.out.print("Informe o número da conta de destino: ");
+        String numeroContaDestino = scanner.nextLine();
+        Conta contaDestino = buscarContaPorNumero(numeroContaDestino);
+
+        TransacaoStrategy estrategia = switch (tipoTransacao) {
+            case 1 -> new Pix();
+            case 2 -> new TED();
+            default -> {
+                System.out.println("Opção inválida para transação!");
+                yield null;
             }
-        }
+        };
 
-        escreverNoJson(jsonObject);
-    }
-
-    private static JsonObject lerJsonContas() {
-        try (FileReader reader = new FileReader(ACCOUNT_FILE_PATH)) {
-            return GSON.fromJson(reader, JsonObject.class);
-        } catch (IOException e) {
-            System.err.println("Erro ao ler o arquivo: " + e.getMessage());
-            return new JsonObject();
+        if (estrategia != null && contaDestino != null) {
+            estrategia.realizarTransacao(valor, conta, contaDestino);
+            salvarContaNoJson(conta);
+            salvarContaNoJson(contaDestino);
         }
     }
 }
