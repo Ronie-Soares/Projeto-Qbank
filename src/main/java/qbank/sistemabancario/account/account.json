@@ -1,0 +1,82 @@
+{
+  "contas": [
+    {
+      "agencia": "746",
+      "numero": "234758",
+      "saldo": 7500.0,
+      "pessoa": {
+        "nome": "Eliseu",
+        "cpf": "04485204197",
+        "rg": "2334517",
+        "email": "eueliseeu@gmail.com",
+        "telefone": "66992316679"
+      },
+      "tipoConta": "Corrente"
+    },
+    {
+      "agencia": "753",
+      "numero": "929601",
+      "saldo": 4000.0,
+      "pessoa": {
+        "nome": "Ronie",
+        "cpf": "0448679832",
+        "rg": "231459",
+        "email": "ronieoliveira@gmail.com",
+        "telefone": "669832456"
+      },
+      "tipoConta": "Poupança"
+    },
+    {
+      "agencia": "826",
+      "numero": "536508",
+      "saldo": 3000.0,
+      "pessoa": {
+        "nome": "Mateus",
+        "cpf": "3131314123",
+        "rg": "12313",
+        "email": "mateus@gmail.com",
+        "telefone": "123412314"
+      },
+      "tipoConta": "Salário"
+    },
+    {
+      "agencia": "608",
+      "numero": "37846",
+      "saldo": 2500.0,
+      "pessoa": {
+        "nome": "Cardoso",
+        "cpf": "1231412314",
+        "rg": "12313",
+        "email": "cardoso@gmail.com",
+        "telefone": "213412314"
+      },
+      "tipoConta": "Salário"
+    },
+    {
+      "agencia": "266",
+      "numero": "316439",
+      "saldo": 3000.0,
+      "pessoa": {
+        "nome": "Moreira",
+        "cpf": "0213124123",
+        "rg": "12314",
+        "email": "moreira@gmail.com",
+        "telefone": "1231412314"
+      },
+      "tipoConta": "Salário"
+    },
+    {
+      "agencia": "548",
+      "numero": "331257",
+      "saldo": 1000.0,
+      "pessoa": {
+        "nome": "Gustavo",
+        "cpf": "12314124512",
+        "rg": "213123",
+        "email": "gustavo@gmail.com",
+        "telefone": "1412314152"
+      },
+      "tipoConta": "Salário"
+    }
+  ]
+}

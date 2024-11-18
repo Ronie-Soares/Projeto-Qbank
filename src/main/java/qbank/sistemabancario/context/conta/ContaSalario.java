@@ -2,14 +2,15 @@ package qbank.sistemabancario.context.conta;
 
 import qbank.sistemabancario.context.pessoa.Pessoa;
 
+import java.math.BigDecimal;
+
 public class ContaSalario extends Conta {
     public ContaSalario(String agencia, String numero, Float saldo, Pessoa pessoa) {
-        super(agencia, numero, saldo, pessoa);
+        super(agencia, numero, BigDecimal.valueOf(saldo), pessoa, "Salário");
     }
 
     @Override
-    public Float getSaldo() {
-        System.out.println("Saldo da sua conta Salario: ");
+    public BigDecimal getSaldo() {
         return super.getSaldo();
     }
 }
