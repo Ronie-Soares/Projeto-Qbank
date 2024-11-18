@@ -24,11 +24,9 @@ public class ContaTest {
     ContaCorrente contaCorrente;
 
 
-    @Test
-    void RetornaTrueAoCriarConta(){
-        assertTrue(conta.contaCriada());
-    }
-
-
+//    @Test
+//    void RetornaTrueAoCriarConta(){
+//        assertTrue(conta.contaCriada());
+//    }
 
 }

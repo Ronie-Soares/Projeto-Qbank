@@ -41,4 +41,12 @@ public abstract class Conta {
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
+
+    public void setAgencia(String agencia) {
+        this.agencia = agencia;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
 }

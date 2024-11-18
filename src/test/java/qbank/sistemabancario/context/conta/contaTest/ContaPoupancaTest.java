@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import qbank.sistemabancario.context.conta.ContaPoupanca;
 import qbank.sistemabancario.context.pessoa.Pessoa;
 
+import java.math.BigDecimal;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ContaPoupancaTest  {
@@ -12,8 +14,8 @@ public class ContaPoupancaTest  {
     ContaPoupanca conta = new ContaPoupanca("001","123",50000F,pessoatest);
     @Test
     void RetornaSaldoDaContaPoupanca() {
-        float saldoConta = conta.getSaldo();
-        assertEquals(saldoConta,50000F);
+        BigDecimal saldoConta = conta.getSaldo();
+        assertEquals(saldoConta,BigDecimal.valueOf(50000F));
     }
     @Test
     void RetornaAgenciaDaContaPoupanca() {
@@ -25,8 +27,8 @@ public class ContaPoupancaTest  {
     }
     @Test
     void AlterandoSaldoDaContaPoupanca() {
-        conta.setSaldo(200.30F);
-        assertEquals(conta.getSaldo(),200.30F);
+        conta.setSaldo(BigDecimal.valueOf(200.30F));
+        assertEquals(conta.getSaldo(), BigDecimal.valueOf(200.30F));
     }
     @Test
     void AlterandoAgenciaDaContaPoupanca() {
