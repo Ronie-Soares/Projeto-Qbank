@@ -22,7 +22,7 @@
         <micronaut.aot.packageName>qbank.sistemabancario.aot.generated</micronaut.aot.packageName>
         <micronaut.runtime>netty</micronaut.runtime>
         <exec.mainClass>qbank.sistemabancario.Application</exec.mainClass>
-        <kafka.compat.version>2.8.0</kafka.compat.version> <!-- Adicione isso para resolver o conflito -->
+        <kafka.version>2.8.0</kafka.version> <!-- Adicione isso para resolver o conflito -->
     </properties>
 
     <repositories>
@@ -37,7 +37,7 @@
             <dependency>
                 <groupId>org.apache.kafka</groupId>
                 <artifactId>kafka-clients</artifactId>
-                <version>${kafka.compat.version}</version>
+                <version>${kafka.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
