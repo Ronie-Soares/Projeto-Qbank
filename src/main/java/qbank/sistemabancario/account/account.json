@@ -78,5 +78,21 @@
       },
       "tipoConta": "Salário"
     }
+  ],
+  "transacoes": [
+    {
+      "id": "1",
+      "contaOrigem": {
+        "agencia": "548",
+        "numero": "331257"
+      },
+      "contaDestino": {
+        "agencia": "746",
+        "numero": "234758"
+      },
+      "valor": 1600.0,
+      "dataHora": "",
+      "tipo": "TED"
+    }
   ]
 }

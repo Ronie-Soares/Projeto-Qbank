@@ -1,9 +1,11 @@
 package qbank.sistemabancario.strategy.transacao;
 
+import com.google.gson.JsonElement;
 import qbank.sistemabancario.context.conta.Conta;
 import java.math.BigDecimal;
 
 public class TED implements TransacaoStrategy {
+
 
     @Override
     public void realizarTransacao(BigDecimal valor, Conta contaOrigem, Conta contaDestino) {
