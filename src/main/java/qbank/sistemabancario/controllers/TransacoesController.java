@@ -5,8 +5,8 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import qbank.sistemabancario.context.conta.Conta;
-import qbank.sistemabancario.dto.ContaService;
 import qbank.sistemabancario.dto.TransacaoService;
+import qbank.sistemabancario.dto.ContaService;
 import qbank.sistemabancario.strategy.transacao.Transacao;
 
 @Controller("/transacoes")

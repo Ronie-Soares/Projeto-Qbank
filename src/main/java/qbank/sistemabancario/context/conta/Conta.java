@@ -1,7 +1,10 @@
 package qbank.sistemabancario.context.conta;
 
 import qbank.sistemabancario.context.pessoa.Pessoa;
+import qbank.sistemabancario.strategy.transacao.Transacao;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 public abstract class Conta {
     private String agencia;
@@ -49,5 +52,6 @@ public abstract class Conta {
     public void setNumero(String numero) {
         this.numero = numero;
     }
+
 }
 
