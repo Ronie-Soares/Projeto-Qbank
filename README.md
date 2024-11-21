@@ -1,7 +1,7 @@
 # Projeto Qbank - A3
 
 ## Descrição do Projeto
-O **Qbank** é um sistema bancário desenvolvido para permitir que os clientes realizem diversas operações financeiras por meio de um aplicativo. As funcionalidades incluem o gerenciamento de contas, transações, empréstimos, cartões de crédito e pagamentos de serviços externos;
+O **Qbank** é um sistema bancário desenvolvido para permitir que os clientes realizem diversas operações financeiras por meio de um aplicativo. As funcionalidades incluem o gerenciamento de contas, transações, empréstimos, cartões de crédito e pagamentos de serviços externos.
 
 ---
 
