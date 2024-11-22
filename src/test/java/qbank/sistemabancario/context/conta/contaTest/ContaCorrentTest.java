@@ -17,7 +17,7 @@ public class ContaCorrentTest {
     void RetornaSaldoDaContaCorrente() {
         BigDecimal saldoConta = conta.getSaldo();
 
-        assertEquals(saldoConta, BigDecimal.valueOf(50000f));
+        assertEquals(saldoConta, BigDecimal.valueOf(500f));
     }
     @Test
     void RetornaAgenciDaContaCorrente() {
